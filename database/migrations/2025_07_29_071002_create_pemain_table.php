@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tim', function (Blueprint $table) {
+        Schema::create('pemain', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('namaTim');
-            $table->binary('logoTim');
-            $table->integer('tahunBerdiri');
-            $table->string('alamatMarkas');
-            $table->string('kotaMarkas');
+            $table->string('namaPemain');
+            $table->integer('tinggiBadan');
+            $table->integer('beratBadan');
+            $table->string('posisiPemain');
+            $table->string('nomorPunggung');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tim');
+        Schema::dropIfExists('pemain');
     }
 };

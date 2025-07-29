@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tim', function (Blueprint $table) {
+        Schema::create('jadwal', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('namaTim');
-            $table->binary('logoTim');
-            $table->integer('tahunBerdiri');
-            $table->string('alamatMarkas');
-            $table->string('kotaMarkas');
+            $table->date('tanggalPertandingan');
+            $table->time('waktuPertandingan');
+            $table->string('timRumah');
+            $table->string('timTamu');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tim');
+        Schema::dropIfExists('jadwal');
     }
 };
