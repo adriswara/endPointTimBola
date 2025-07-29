@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             // TimSeeder::class,
-            PemainSeeder::class,
+            // PemainSeeder::class,
+            // JadwalSeeder::class,
             // Add other seeders here as needed
         ]);
        
