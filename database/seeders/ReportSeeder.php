@@ -18,9 +18,9 @@ class ReportSeeder extends Seeder
 
         foreach (range(1, 10) as $i) {
             DB::table('report')->insert([
-                'judul' => $faker->sentence,
-                'isi' => $faker->paragraph,
-                'tanggal' => $faker->date(),
+                'id_jadwal' => $faker->numberBetween(1, 10), // Assuming jadwal IDs are between 1 and 10
+                'id_tim_home' => $faker->numberBetween(1, 10), // Assuming team IDs are between 1 and 10
+                'id_tim_away' => $faker->numberBetween(1, 10), // Assuming team IDs are between 1 and 10
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
