@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pemain;
 use App\Models\Skor;
 use Illuminate\Http\Request;
 
 class PemainController extends Controller
 {
-      // Your methods for handling Jadwal-related requests will go here
+    // Your methods for handling Jadwal-related requests will go here
     // For example:
-    
+
     public function showAll()
     {
-        $skors = Skor::all();
-        return response()->json($skors);
+        $pemains = Pemain::all();
+        return response()->json($pemains);
     }
 
     public function show($id)
