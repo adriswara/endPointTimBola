@@ -9,12 +9,12 @@ class Pemain extends Model
     protected $table = 'pemain';
 
     protected $fillable = [
+        'idTim', 
         'namaPemain',
         'tinggiBadan',
         'beratBadan',
         'posisiPemain',
         'nomorPunggung',
-        'idTim', // Assuming you want to include this field
     ];
 
     public function tim()

@@ -27,5 +27,21 @@ class TimController extends Controller
         // Logic to retrieve and return a specific jadwal by ID
     }
 
+
+    public function insert(Request $request)
+    {
+        $validated = $request->validate([
+            'namaTim' => 'required|string|max:255',
+            'logoTim' => 'required',
+            'tahunBerdiri' => 'required|integer',
+            'alamatMarkas' => 'required|string|max:255',
+            'kotaMarkas' => 'required|string|max:50',
+        ]);
+
+        $tims = Tim::create($validated);
+
+        return response()->json($tims, 201);
+    }
+
     // Add more methods as needed for your application
 }
