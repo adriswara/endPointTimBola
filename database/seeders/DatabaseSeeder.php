@@ -17,8 +17,7 @@ class DatabaseSeeder extends Seeder
             // TimSeeder::class,
             // PemainSeeder::class,
             // JadwalSeeder::class,
-            // SkorSeeder::class,
-            ReportSeeder::class,
+            SkorSeeder::class,
             // Add other seeders here as needed
         ]);
     }

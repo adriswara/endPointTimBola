@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('report', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->integer('id_jadwal');
-            $table->integer('id_tim_home');
-            $table->integer('id_tim_away');
-            $table->timestamps();
+        Schema::table('skor', function (Blueprint $table) {
+            $table->dropColumn('idTim');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('report');
+        Schema::table('skor', function (Blueprint $table) {
+            //
+        });
     }
 };

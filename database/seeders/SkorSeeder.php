@@ -19,10 +19,9 @@ class SkorSeeder extends Seeder
         foreach (range(1, 10) as $i) {
             DB::table('skor')->insert([
                 'totalSkor' => $faker->numberBetween(0, 5),
-                'pemainYangMencetakGol' => $faker->name,
+                'pemainYangMencetakGol' => $faker->numberBetween(1, 150),
                 'waktuTerjadinyaGol' => $faker->time(),
                 'idJadwal' => $faker->numberBetween(1, 10), // adjust as needed
-                'idTim' => $faker->numberBetween(1, 10),    // adjust as needed
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
