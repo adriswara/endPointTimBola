@@ -13,6 +13,5 @@ class Skor extends Model
         'pemainYangMencetakGol',
         'waktuTerjadinyaGol',
         'idJadwal',
-        'idTim',
     ];
 }
