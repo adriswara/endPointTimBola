@@ -9,11 +9,10 @@ class Jadwal extends Model
     protected $table = 'jadwal';
 
     protected $fillable = [
-        'tanggal',
-        'waktu',
-        'lokasi',
-        'timHome',
-        'timAway',
+        'tanggalPertandingan',
+        'waktuPertandingan',
+        'timRumah',
+        'timTamu',
     ];
 
     public function timHome()

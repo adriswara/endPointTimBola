@@ -15,3 +15,5 @@ Route::get('/tim/showAll', [TimController::class, 'showAll']);
 Route::get('/jadwal/showAll', [JadwalController::class, 'showAll']);
 Route::get('/skor/showAll', [SkorController::class, 'showAll']);
 Route::get('/report/showAll', [ReportController::class, 'showAll']);
+// 
+// Route::post('/jadwal/insert', [JadwalController::class, 'insert']);
