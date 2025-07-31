@@ -15,3 +15,8 @@ Route::post('/jadwal/insert', [JadwalController::class, 'insert']);
 Route::post('/pemain/insert', [PemainController::class, 'insert']);
 Route::post('/tim/insert', [TimController::class, 'insert']);
 Route::post('/skor/insert', [SkorController::class, 'insert']);
+Route::post('/skor/update/{id}', [SkorController::class, 'update']);
+Route::put('/skor/softDelete/{id}', [SkorController::class, 'softDelete']);
+Route::put('/pemain/softDelete/{id}', [PemainController::class, 'softDelete']);
+Route::put('/tim/softDelete/{id}', [TimController::class, 'softDelete']);
+Route::put('/jadwal/softDelete/{id}', [JadwalController::class, 'softDelete']);

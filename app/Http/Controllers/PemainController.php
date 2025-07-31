@@ -39,6 +39,35 @@ class PemainController extends Controller
         return response()->json($pemains, 201);
     }
 
+    public function update(Request $request, $id)
+    {
+        $pemains = Pemain::findOrFail($id);
+        $validated = $request->validate([
+            'idTim' => 'sometimes|required|integer',
+            'namaPemain' => 'sometimes|required|string|max:255',
+            'tinggiBadan' => 'sometimes|required|integer',
+            'beratBadan' => 'sometimes|required|integer',
+            'posisiPemain' => 'sometimes|required|string|max:50',
+            'nomorPunggung' => 'sometimes|required|string|max:10',
+        ]);
+
+        $pemains->update($validated);
+
+        return response()->json($pemains);
+    }
+
+
+    public function softDelete($id)
+    {
+        $pemains = Pemain::find($id);
+        if (!$pemains) {
+            return response()->json(['message' => 'Pemain not found'], 404);
+        }
+        $pemains->delete();
+
+        return response()->json(['message' => 'Pemain deleted successfully']);
+    }
+
 
 
 

@@ -36,5 +36,29 @@ class SkorController extends Controller
 
         return response()->json($skors, 201);
     }
+
+    public function update(Request $request, $id)
+    {
+        $skor = Skor::findOrFail($id);
+        $validated = $request->validate([
+            'totalSkor' => 'sometimes|required|string|max:255',
+            'pemainYangMencetakGol' => 'sometimes|required|string|max:255',
+            'waktuTerjadinyaGol' => 'sometimes|required',
+            'idJadwal' => 'sometimes|required|integer',
+        ]);
+
+        $skor->update($validated);
+
+        return response()->json($skor);
+    }
+    public function softDelete($id)
+    {
+        $skors = Skor::find($id);
+        if (!$skors) {
+            return response()->json(['message' => 'Skor not found'], 404);
+        }
+        $skors->delete();
+        return response()->json(['message' => 'Skor deleted successfully']);
+    }
     // Add more methods as needed for your application
 }

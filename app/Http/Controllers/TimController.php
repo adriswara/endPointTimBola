@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tim; // Assuming you have a Tim model
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class TimController extends Controller
@@ -41,6 +42,33 @@ class TimController extends Controller
         $tims = Tim::create($validated);
 
         return response()->json($tims, 201);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $tim = Tim::findOrFail($id);
+        $validated = $request->validate([
+            'namaTim' => 'sometimes|required|string|max:255',
+            'logoTim' => 'sometimes|required',
+            'tahunBerdiri' => 'sometimes|required|integer',
+            'alamatMarkas' => 'sometimes|required|string|max:255',
+            'kotaMarkas' => 'sometimes|required|string|max:50',
+        ]);
+
+        $tim->update($validated);
+
+        return response()->json($tim);
+    }
+
+    public function softDelete($id)
+    {
+        $tim = Tim::find($id);
+        if (!$tim) {
+            return response()->json(['message' => 'Tim not found'], 404);
+        }
+        $tim->delete();
+
+        return response()->json(['message' => 'Tim deleted successfully']);
     }
 
     // Add more methods as needed for your application

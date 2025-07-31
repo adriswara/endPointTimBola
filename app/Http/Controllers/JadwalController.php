@@ -35,6 +35,30 @@ class JadwalController extends Controller
 
         return response()->json($jadwal, 201);
     }
+    public function update(Request $request, $id)
+    {
+        $jadwals = Jadwal::findOrFail($id);
+        $validated = $request->validate([
+            'tanggalPertandingan' => 'sometimes|required|date',
+            'waktuPertandingan' => 'sometimes|required',
+            'timRumah' => 'sometimes|required|integer',
+            'timTamu' => 'sometimes|required|integer',
+        ]);
+
+        $jadwals->update($validated);
+
+        return response()->json($jadwals);
+    }
+    public function softDelete($id)
+    {
+        $jadwals = Jadwal::find($id);
+        if (!$jadwals) {
+            return response()->json(['message' => 'Jadwal not found'], 404);
+        }
+        $jadwals->delete();
+
+        return response()->json(['message' => 'Jadwal deleted successfully']);
+    }
 
     // Add more methods as needed for your application
 }
